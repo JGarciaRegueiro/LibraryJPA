@@ -74,7 +74,8 @@ public class Main {
 		//1:1-2:2-3:6-4:3-5:7-6:4-7:8-8:5
 		//creación: 1-2-3-4-5-6-7-8
 		//bbdd:     1-2-6-3-7-4-8-5		
-		//Creando relaciones - AuthorLibros		
+		//Creando relaciones - AuthorLibros
+		
 		CreateLinkAuthorBooks(author1, listAuthor1Books); //1-1:6:7 = (ok)
 		CreateLinkAuthorBooks(author2, listAuthor2Books); //2-2:3:4:5 = (ok)
 		CreateLinkAuthorBooks(author3, listAuthor3Books); //3-8 = (ok)
@@ -95,8 +96,7 @@ public class Main {
 		//Persistencias
 		EntityTransaction et = em.getTransaction();
 		et.begin();
-		
-		/*
+				
 		em.persist(book1);
 		em.persist(book2);
 		em.persist(book3);
@@ -105,9 +105,10 @@ public class Main {
 		em.persist(book6);
 		em.persist(book7);
 		em.persist(book8);
-		*/
+		
 		//Si tiene cascada no habría que opner libros pero la persistencia se ve agrupada en función
 		//de la lista añadida si pones los autores antes o después de los libros. Muy interesante
+		/*
 		em.persist(author1);
 		em.persist(author2);
 		em.persist(author3);
@@ -117,7 +118,7 @@ public class Main {
 		
 		em.persist(library1);
 		em.persist(library2);
-		
+		*/
 		et.commit();
 		
 		System.out.println("Enlaces completados!");

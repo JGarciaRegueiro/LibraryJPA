@@ -27,12 +27,12 @@ public class Book {
 	
 	@Column(name = "precio")
 	private double price;
-	
-	@ManyToOne
+		
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "fk_id_author", referencedColumnName = "id")
 	private Author author;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "fk_id_editorial", referencedColumnName = "id")
 	private Editorial editorial;	
 	
