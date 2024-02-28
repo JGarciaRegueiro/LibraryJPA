@@ -25,7 +25,7 @@ public class Editorial {
 	@Column(name = "direccion")
 	private String address;
 	
-	@OneToMany(mappedBy = "idEditorial", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "editorial", cascade = CascadeType.ALL)
 	private List<Book> listBooks;
 	
 	public Editorial() {
@@ -92,7 +92,8 @@ public class Editorial {
 
 	@Override
 	public String toString() {
-		return "Editorial [id=" + id + ", name=" + name + ", address=" + address + ", listBooks=" + listBooks + "]";
+		return "Editorial [id=" + id + ", name=" + name + ", address=" + address + "]";
 	}
+	
 
 }
