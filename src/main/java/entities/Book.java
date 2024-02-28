@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -8,7 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,12 +27,14 @@ public class Book {
 	
 	@Column(name = "precio")
 	private double price;
+		
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "fk_id_author", referencedColumnName = "id")
+	private Author author;
 	
-	@Column(name = "id_autor")
-	private int idAuthor;
-	
-	@Column(name = "id_editorial")
-	private int idEditorial;
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "fk_id_editorial", referencedColumnName = "id")
+	private Editorial editorial;	
 	
 	@ManyToMany(mappedBy = "listBooks", cascade = CascadeType.PERSIST)
 	private List<Library> listLibraries;
@@ -38,12 +43,13 @@ public class Book {
 		super();
 	}
 
-	public Book(String title, double price, int idAuthor, int idEditorial) {
+	public Book(String title, double price, Author author, Editorial editorial) {
 		super();
 		this.title = title;
 		this.price = price;
-		this.idAuthor = idAuthor;
-		this.idEditorial = idEditorial;
+		this.author = author;
+		this.editorial = editorial;
+		listLibraries = new ArrayList<Library>();
 	}
 
 	public int getId() {
@@ -70,20 +76,20 @@ public class Book {
 		this.price = price;
 	}
 
-	public int getIdAuthor() {
-		return idAuthor;
+	public Author getAuthor() {
+		return author;
 	}
 
-	public void setIdAuthor(int idAuthor) {
-		this.idAuthor = idAuthor;
+	public void setAuthor(Author author) {
+		this.author = author;
 	}
 
-	public int getIdEditorial() {
-		return idEditorial;
+	public Editorial getEditorial() {
+		return editorial;
 	}
 
-	public void setIdEditorial(int idEditorial) {
-		this.idEditorial = idEditorial;
+	public void setEditorial(Editorial editorial) {
+		this.editorial = editorial;
 	}
 
 	public List<Library> getListLibraries() {
@@ -116,9 +122,11 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return "Book [id=" + id + ", title=" + title + ", price=" + price + ", idAuthor=" + idAuthor + ", idEditorial="
-				+ idEditorial + "]";
+		return "Book [id=" + id + ", title=" + title + ", price=" + price + ", author=" + author + ", editorial="
+				+ editorial + "]";
 	}
+
+
 	
 	
 }
