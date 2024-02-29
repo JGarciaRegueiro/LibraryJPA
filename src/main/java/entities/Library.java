@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -45,6 +46,7 @@ public class Library {
 		this.name = name;
 		this.owner = owner;
 		this.address = address;
+		listBooks = new ArrayList<Book>();
 	}
 
 	public int getId() {
@@ -113,4 +115,5 @@ public class Library {
 				+ listBooks + "]";
 	}
 
+	
 }

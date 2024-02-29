@@ -32,7 +32,7 @@ public class Author {
 	@Temporal(TemporalType.DATE)
 	private Date bornDate;
 	
-	@OneToMany(mappedBy = "idAuthor", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
 	private List<Book> books;
 
 	public Author() {
@@ -111,9 +111,9 @@ public class Author {
 
 	@Override
 	public String toString() {
-		return "Author [id=" + id + ", name=" + name + ", surname=" + surname + ", bornDate=" + bornDate + ", books="
-				+ books + "]";
+		return "Author [id=" + id + ", name=" + name + ", surname=" + surname + ", bornDate=" + bornDate + "]";
 	}
-	
+
+
 		
 }
