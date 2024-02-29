@@ -108,7 +108,7 @@ public class Main {
 		
 		//Si tiene cascada no habría que opner libros pero la persistencia se ve agrupada en función
 		//de la lista añadida si pones los autores antes o después de los libros. Muy interesante
-		/*
+		
 		em.persist(author1);
 		em.persist(author2);
 		em.persist(author3);
@@ -118,7 +118,7 @@ public class Main {
 		
 		em.persist(library1);
 		em.persist(library2);
-		*/
+		
 		et.commit();
 		
 		System.out.println("Enlaces completados!");
